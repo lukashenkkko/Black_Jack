@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/pht">
+        <file>image/background.jpg</file>
+        <file>image/background_mainmenu.jpg</file>
+        <file>image/title.png</file>
+    </qresource>
+</RCC>
