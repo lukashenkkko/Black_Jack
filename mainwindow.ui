@@ -2,6 +2,9 @@
 <ui version="4.0">
  <class>MainWindow</class>
  <widget class="QMainWindow" name="MainWindow">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -10,8 +13,15 @@
     <height>551</height>
    </rect>
   </property>
+  <property name="contextMenuPolicy">
+   <enum>Qt::DefaultContextMenu</enum>
+  </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Black Jack</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="Image.qrc">
+    <normaloff>:/pht/image/icon.png</normaloff>:/pht/image/icon.png</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLabel" name="label_background_main">
@@ -60,8 +70,27 @@
          <height>0</height>
         </size>
        </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton
+{
+ border: 4px solid black;
+  border-radius: 20px;
+  padding: 10px;
+background-color: rgb(169, 0, 0);
+	font: 900 16pt &quot;Segoe UI Black&quot;;
+  font: black;
+}
+
+QPushButton:hover{
+background-color: rgb(139, 0, 0);
+}
+
+QPushButton:pressed{
+background-color: rgb(119, 0, 0);
+}</string>
+       </property>
        <property name="text">
-        <string>PushButton</string>
+        <string>Почати гру</string>
        </property>
       </widget>
      </item>
@@ -79,8 +108,27 @@
          <height>0</height>
         </size>
        </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton
+{
+ border: 4px solid black;
+  border-radius: 20px;
+  padding: 10px;
+background-color: rgb(169, 0, 0);
+	font: 900 16pt &quot;Segoe UI Black&quot;;
+  font: black;
+}
+
+QPushButton:hover{
+background-color: rgb(139, 0, 0);
+}
+
+QPushButton:pressed{
+background-color: rgb(119, 0, 0);
+}</string>
+       </property>
        <property name="text">
-        <string>PushButton</string>
+        <string>Налаштування</string>
        </property>
        <property name="iconSize">
         <size>
@@ -100,12 +148,31 @@
        </property>
        <property name="minimumSize">
         <size>
-         <width>120</width>
+         <width>300</width>
          <height>70</height>
         </size>
        </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton
+{
+ border: 4px solid black;
+  border-radius: 20px;
+  padding: 10px;
+background-color: rgb(169, 0, 0);
+	font: 900 16pt &quot;Segoe UI Black&quot;;
+  font: black;
+}
+
+QPushButton:hover{
+background-color: rgb(139, 0, 0);
+}
+
+QPushButton:pressed{
+background-color: rgb(119, 0, 0);
+}</string>
+       </property>
        <property name="text">
-        <string>PushButton</string>
+        <string>Вийти зі гри</string>
        </property>
       </widget>
      </item>
@@ -127,16 +194,6 @@
      <pixmap resource="Image.qrc">:/pht/image/title.png</pixmap>
     </property>
    </widget>
-  </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>761</width>
-     <height>21</height>
-    </rect>
-   </property>
   </widget>
  </widget>
  <resources>

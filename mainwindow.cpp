@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "setting.h"
 #include <QPixmap>
 
 
@@ -30,5 +31,17 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::on_pushButton_3_clicked()
+{
+    QApplication::quit();
+}
+
+void MainWindow::on_pushButton_2_clicked()
+{
+    Setting settingWindow;
+    settingWindow.setModal(true);
+    settingWindow.exec();
 }
 

@@ -3,5 +3,6 @@
         <file>image/background.jpg</file>
         <file>image/background_mainmenu.jpg</file>
         <file>image/title.png</file>
+        <file>image/icon.png</file>
     </qresource>
 </RCC>
