@@ -4,5 +4,13 @@
         <file>image/background_mainmenu.jpg</file>
         <file>image/title.png</file>
         <file>image/icon.png</file>
+        <file>image/coin1.png</file>
+        <file>image/coin5 .png</file>
+        <file>image/coin10.png</file>
+        <file>image/coin50.png</file>
+        <file>image/coin100.png</file>
+        <file>image/coin500.png</file>
+        <file>image/menu.png</file>
+        <file>image/sound.png</file>
     </qresource>
 </RCC>

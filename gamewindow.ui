@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Gamewindow</class>
+ <widget class="QDialog" name="Gamewindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1081</width>
+    <height>640</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <widget class="QLabel" name="label_background">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>470</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_6">
+   <property name="geometry">
+    <rect>
+     <x>510</x>
+     <y>320</y>
+     <width>91</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"> border: 4px solid white;
+  border-radius: 45px;
+  padding: 10px;</string>
+   </property>
+   <property name="text">
+    <string>PushButton</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_coin1">
+   <property name="geometry">
+    <rect>
+     <x>300</x>
+     <y>550</y>
+     <width>91</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"> border: 4px solid black;
+
+</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_coin10">
+   <property name="geometry">
+    <rect>
+     <x>440</x>
+     <y>430</y>
+     <width>91</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"> border: 4px solid black;
+
+</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_coin50">
+   <property name="geometry">
+    <rect>
+     <x>540</x>
+     <y>430</y>
+     <width>91</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"> border: 4px solid black;
+
+</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_coin100">
+   <property name="geometry">
+    <rect>
+     <x>640</x>
+     <y>450</y>
+     <width>91</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"> border: 4px solid black;
+
+</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_coin5">
+   <property name="geometry">
+    <rect>
+     <x>340</x>
+     <y>460</y>
+     <width>91</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"> border: 4px solid black;
+
+</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_coin500">
+   <property name="geometry">
+    <rect>
+     <x>670</x>
+     <y>550</y>
+     <width>91</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"> border: 4px solid black;
+
+</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_menu">
+   <property name="geometry">
+    <rect>
+     <x>840</x>
+     <y>470</y>
+     <width>81</width>
+     <height>81</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton
+{
+ border: 4px solid black;
+  border-radius: 20px;
+  padding: 10px;
+background-color: rgb(50, 50, 50);
+	font: 900 16pt &quot;Segoe UI Black&quot;;
+  font: black;
+}
+
+QPushButton:hover{
+background-color: rgb(40, 40, 40);
+}
+
+QPushButton:pressed{
+background-color: rgb(30, 30, 30);
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset resource="Image.qrc">
+     <normaloff>:/pht/image/menu.png</normaloff>:/pht/image/menu.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>81</width>
+     <height>81</height>
+    </size>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_sound">
+   <property name="geometry">
+    <rect>
+     <x>960</x>
+     <y>470</y>
+     <width>81</width>
+     <height>81</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton
+{
+ border: 4px solid black;
+  border-radius: 20px;
+  padding: 10px;
+background-color: rgb(50, 50, 50);
+	font: 900 16pt &quot;Segoe UI Black&quot;;
+  font: black;
+}
+
+QPushButton:hover{
+background-color: rgb(40, 40, 40);
+}
+
+QPushButton:pressed{
+background-color: rgb(30, 30, 30);
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset resource="Image.qrc">
+     <normaloff>:/pht/image/sound.png</normaloff>:/pht/image/sound.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>55</width>
+     <height>55</height>
+    </size>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_panel">
+   <property name="geometry">
+    <rect>
+     <x>-22</x>
+     <y>485</y>
+     <width>1141</width>
+     <height>181</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(55, 55, 55);
+ border: 3px solid white;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_right">
+   <property name="geometry">
+    <rect>
+     <x>570</x>
+     <y>570</y>
+     <width>80</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Segoe UI Black</family>
+     <pointsize>16</pointsize>
+     <italic>false</italic>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">
+
+QPushButton
+{
+ border: 4px solid black;
+  border-radius: 20px;
+  padding: 10px;
+background-color: rgb(50, 50, 50);
+	font: 900 16pt &quot;Segoe UI Black&quot;;
+   color: rgb(255,255,255);
+}
+
+QPushButton:hover{
+background-color: rgb(40, 40, 40);
+}
+
+QPushButton:pressed{
+background-color: rgb(30, 30, 30);
+}</string>
+   </property>
+   <property name="text">
+    <string>🡺</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_left">
+   <property name="geometry">
+    <rect>
+     <x>430</x>
+     <y>570</y>
+     <width>80</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Segoe UI Black</family>
+     <pointsize>16</pointsize>
+     <italic>false</italic>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton
+{
+ border: 4px solid black;
+  border-radius: 20px;
+  padding: 10px;
+background-color: rgb(50, 50, 50);
+	font: 900 16pt &quot;Segoe UI Black&quot;;
+ color: rgb(255,255,255);
+}
+
+QPushButton:hover{
+background-color: rgb(40, 40, 40);
+}
+
+QPushButton:pressed{
+background-color: rgb(30, 30, 30);
+}</string>
+   </property>
+   <property name="text">
+    <string>🡸</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_arrow">
+   <property name="geometry">
+    <rect>
+     <x>530</x>
+     <y>530</y>
+     <width>31</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>19</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string>🡹</string>
+   </property>
+  </widget>
+  <zorder>label_background</zorder>
+  <zorder>pushButton_6</zorder>
+  <zorder>label_panel</zorder>
+  <zorder>pushButton_menu</zorder>
+  <zorder>pushButton_sound</zorder>
+  <zorder>label_coin1</zorder>
+  <zorder>label_coin10</zorder>
+  <zorder>label_coin100</zorder>
+  <zorder>label_coin5</zorder>
+  <zorder>label_coin50</zorder>
+  <zorder>label_coin500</zorder>
+  <zorder>pushButton_right</zorder>
+  <zorder>pushButton_left</zorder>
+  <zorder>label_arrow</zorder>
+ </widget>
+ <resources>
+  <include location="Image.qrc"/>
+ </resources>
+ <connections/>
+</ui>

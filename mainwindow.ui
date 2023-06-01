@@ -57,7 +57,7 @@
       <number>0</number>
      </property>
      <item>
-      <widget class="QPushButton" name="pushButton">
+      <widget class="QPushButton" name="pushButton_play">
        <property name="minimumSize">
         <size>
          <width>120</width>
@@ -95,7 +95,7 @@ background-color: rgb(119, 0, 0);
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_2">
+      <widget class="QPushButton" name="pushButton_setting">
        <property name="minimumSize">
         <size>
          <width>300</width>
@@ -139,7 +139,7 @@ background-color: rgb(119, 0, 0);
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_3">
+      <widget class="QPushButton" name="pushButton_exit">
        <property name="sizePolicy">
         <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
          <horstretch>0</horstretch>
