@@ -5,12 +5,14 @@
 #include <iostream>
 #include "QString"
 
-Gamewindow::Gamewindow(QWidget *parent) :
+ Gamewindow::Gamewindow(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::Gamewindow)
 {
     ui->setupUi(this);
      setWindowFlags(Qt::Dialog | Qt::MSWindowsFixedSizeDialogHint); //Static window size
+
+    ui->pushButton_play->hide();
 
     //setting the size of the background image
     QPixmap background(":/pht/image/background.jpg");
@@ -43,10 +45,7 @@ Gamewindow::Gamewindow(QWidget *parent) :
     yShift=610;
     scale=190;
     angleStep=0;
-
-    //i=1;
-   //std::shared_ptr<int> coinID(new int(i));
-    //*coinID=i;
+    coinID=1;
 
     coinList.append(ui->label_coin1);
     coinList.append(ui->label_coin5);
@@ -55,6 +54,7 @@ Gamewindow::Gamewindow(QWidget *parent) :
     coinList.append(ui->label_coin100);
     coinList.append(ui->label_coin500);
 
+    skinID=1;
     //Adding cards objects
     CardInfo card1(":/Cards1/image/cards/1/2B.png",2,skinID);
     CardInfo card2(":/Cards1/image/cards/1/2C.png",2,skinID);
@@ -135,14 +135,20 @@ Gamewindow::~Gamewindow()
 void Gamewindow::on_pushButton_left_clicked()
 {
     coinScrolling(1.047);
-   //*coinID-=1;
+    if(coinID==1)
+        coinID=6;
+    else
+    coinID-=1;
 }
 
 void Gamewindow::on_pushButton_right_clicked()
 {
     //2.6
     coinScrolling(-1.047);
-    //*coinID+=1;
+    if(coinID==6)
+    coinID=1;
+    else
+    coinID+=1;
 }
 
 void Gamewindow::coinScrolling(float turn)
@@ -160,11 +166,80 @@ void Gamewindow::coinScrolling(float turn)
     }
 }
 
-void Gamewindow::on_pushButton_6_clicked()
+//function to exit the mode when can place bet
+void Gamewindow::bet_regimeON()
 {
-    //ui->pushButton_6->setText(QString::number(*coinID));
+    ui->pushButton_6->setEnabled(true);
+    ui->label_arrow->show();
+    ui->pushButton_left->show();
+    ui->pushButton_right->show();
+    ui->pushButton_play->show();
+    ui->label_coin1->show();
+    ui->label_coin5->show();
+    ui->label_coin10->show();
+    ui->label_coin100->show();
+    ui->label_coin500->show();
 }
 
+//function to enter the mode when can place bet
+void Gamewindow::bet_regimeOFF()
+{
+    ui->pushButton_6->setEnabled(false);
+    ui->label_arrow->hide();
+    ui->pushButton_left->hide();
+    ui->pushButton_right->hide();
+    ui->pushButton_play->hide();
+    ui->label_coin1->hide();
+    ui->label_coin5->hide();
+    ui->label_coin10->hide();
+    ui->label_coin100->hide();
+    ui->label_coin500->hide();
+}
+
+//button for bet
+void Gamewindow::on_pushButton_6_clicked()
+{
+     ui->pushButton_play->show();
+
+    switch(coinID){
+    case 1:{
+        QPixmap coin1pix(":/pht/image/coin1.png");
+        ui->label_2->setPixmap(coin1pix.scaled(ui->label_coin1->width(),ui->label_coin1->height()));
+        ui->label_bet_number->setText("1");
+        break;
+    }
+    case 2:{
+        QPixmap coin5pix(":/pht/image/coin5 .png");
+        ui->label_2->setPixmap(coin5pix.scaled(ui->label_coin5->width(),ui->label_coin5->height()));
+        ui->label_bet_number->setText("5");
+        break;
+    }
+    case 3:{
+        QPixmap coin10pix(":/pht/image/coin10.png");
+        ui->label_2->setPixmap(coin10pix.scaled(ui->label_coin10->width(),ui->label_coin10->height()));
+        ui->label_bet_number->setText("10");
+        break;
+    }
+    case 4:{
+        QPixmap coin50pix(":/pht/image/coin50.png");
+        ui->label_2->setPixmap(coin50pix.scaled(ui->label_coin50->width(),ui->label_coin50->height()));
+        ui->label_bet_number->setText("50");
+        break;
+    }
+    case 5:{
+        QPixmap coin100pix(":/pht/image/coin100.png");
+        ui->label_2->setPixmap(coin100pix.scaled(ui->label_coin100->width(),ui->label_coin100->height()));
+        ui->label_bet_number->setText("100");
+        break;
+    }
+    case 6:{
+        QPixmap coin500pix(":/pht/image/coin500.png");
+        ui->label_2->setPixmap(coin500pix.scaled(ui->label_coin500->width(),ui->label_coin500->height()));
+        ui->label_bet_number->setText("500");
+        break;
+    }
+    }
+}
 
 void Gamewindow::on_pushButton_menu_clicked()
 {
@@ -173,4 +248,9 @@ void Gamewindow::on_pushButton_menu_clicked()
     gameMenuWindow.exec();
 }
 
+void Gamewindow::on_pushButton_play_clicked()
+{
+    bet_regimeOFF();
+
+}
 

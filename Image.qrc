@@ -12,6 +12,7 @@
         <file>image/coin500.png</file>
         <file>image/menu.png</file>
         <file>image/sound.png</file>
+        <file>image/play.png</file>
     </qresource>
     <qresource prefix="/Cards1">
         <file>image/cards/1/2B.png</file>

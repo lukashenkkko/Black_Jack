@@ -42,19 +42,29 @@
   <widget class="QPushButton" name="pushButton_6">
    <property name="geometry">
     <rect>
-     <x>510</x>
-     <y>320</y>
-     <width>91</width>
-     <height>91</height>
+     <x>490</x>
+     <y>290</y>
+     <width>111</width>
+     <height>111</height>
     </rect>
    </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
    <property name="styleSheet">
-    <string notr="true"> border: 4px solid white;
-  border-radius: 45px;
-  padding: 10px;</string>
+    <string notr="true">QPushButton
+{
+ border: 5px solid;
+border-color: rgb(173, 173, 173);
+  border-radius: 55px;
+  padding: 10px;
+}
+QPushButton:hover{
+	border-color: rgb(255, 255, 255);
+}</string>
    </property>
    <property name="text">
-    <string>PushButton</string>
+    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="label_coin1">
@@ -67,8 +77,7 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true"> border: 4px solid black;
-
+    <string notr="true">
 </string>
    </property>
    <property name="text">
@@ -85,7 +94,7 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true"> border: 4px solid black;
+    <string notr="true">
 
 </string>
    </property>
@@ -103,8 +112,7 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true"> border: 4px solid black;
-
+    <string notr="true">
 </string>
    </property>
    <property name="text">
@@ -121,7 +129,7 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true"> border: 4px solid black;
+    <string notr="true">
 
 </string>
    </property>
@@ -139,9 +147,7 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true"> border: 4px solid black;
-
-</string>
+    <string notr="true"/>
    </property>
    <property name="text">
     <string/>
@@ -157,8 +163,7 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true"> border: 4px solid black;
-
+    <string notr="true">
 </string>
    </property>
    <property name="text">
@@ -379,11 +384,178 @@ background-color: rgb(30, 30, 30);
     </rect>
    </property>
    <property name="text">
-    <string>TextLabel</string>
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>490</x>
+     <y>280</y>
+     <width>91</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>501</x>
+     <y>300</y>
+     <width>91</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_play">
+   <property name="geometry">
+    <rect>
+     <x>205</x>
+     <y>470</y>
+     <width>81</width>
+     <height>81</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton
+{
+ border: 4px solid black;
+  border-radius: 20px;
+  padding: 10px;
+background-color: rgb(50, 50, 50);
+	font: 900 16pt &quot;Segoe UI Black&quot;;
+  font: black;
+}
+
+QPushButton:hover{
+background-color: rgb(40, 40, 40);
+}
+
+QPushButton:pressed{
+background-color: rgb(30, 30, 30);
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset resource="Image.qrc">
+     <normaloff>:/pht/image/play.png</normaloff>:/pht/image/play.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>70</width>
+     <height>55</height>
+    </size>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_all">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>590</y>
+     <width>91</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Rubik Bubbles</family>
+     <pointsize>16</pointsize>
+     <italic>false</italic>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255, 255, 255);
+font: 16pt &quot;Rubik Bubbles&quot;;</string>
+   </property>
+   <property name="text">
+    <string>Всього:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_bet">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>530</y>
+     <width>91</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Rubik Bubbles</family>
+     <pointsize>16</pointsize>
+     <italic>false</italic>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255, 255, 255);
+font: 16pt &quot;Rubik Bubbles&quot;;</string>
+   </property>
+   <property name="text">
+    <string>Ставка:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_bet_number">
+   <property name="geometry">
+    <rect>
+     <x>110</x>
+     <y>530</y>
+     <width>161</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Rubik Bubbles</family>
+     <pointsize>16</pointsize>
+     <italic>false</italic>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255, 255, 255);
+font: 16pt &quot;Rubik Bubbles&quot;;</string>
+   </property>
+   <property name="text">
+    <string>0</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_all_number">
+   <property name="geometry">
+    <rect>
+     <x>105</x>
+     <y>590</y>
+     <width>161</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Rubik Bubbles</family>
+     <pointsize>16</pointsize>
+     <italic>false</italic>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255, 255, 255);
+font: 16pt &quot;Rubik Bubbles&quot;;</string>
+   </property>
+   <property name="text">
+    <string>1000</string>
    </property>
   </widget>
   <zorder>label_background</zorder>
-  <zorder>pushButton_6</zorder>
   <zorder>label_panel</zorder>
   <zorder>pushButton_menu</zorder>
   <zorder>pushButton_sound</zorder>
@@ -397,6 +569,14 @@ background-color: rgb(30, 30, 30);
   <zorder>pushButton_left</zorder>
   <zorder>label_arrow</zorder>
   <zorder>card_side</zorder>
+  <zorder>label</zorder>
+  <zorder>label_2</zorder>
+  <zorder>pushButton_6</zorder>
+  <zorder>pushButton_play</zorder>
+  <zorder>label_all</zorder>
+  <zorder>label_bet</zorder>
+  <zorder>label_bet_number</zorder>
+  <zorder>label_all_number</zorder>
  </widget>
  <resources>
   <include location="Image.qrc"/>

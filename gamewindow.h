@@ -31,6 +31,8 @@ private slots:
 
     void on_pushButton_menu_clicked();
 
+    void on_pushButton_play_clicked();
+
 private:
     Ui::Gamewindow *ui;
 
@@ -40,11 +42,13 @@ private:
     int xShift, yShift, scale;
     float angleStep;
     QList<QLabel*> coinList;
-    void coinScrolling(float turn); //function of coin animation
-    void cardCreating(int);
 
-    //int i;
-    //std::shared_ptr<int> coinID();
+    void coinScrolling(float turn); //function of coin animation
+
+    void bet_regimeON();
+    void bet_regimeOFF();
+
+    int coinID;
 };
 
 #endif // GAMEWINDOW_H
