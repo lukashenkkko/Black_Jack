@@ -369,6 +369,19 @@ background-color: rgb(30, 30, 30);
     <string>🡹</string>
    </property>
   </widget>
+  <widget class="QLabel" name="card_side">
+   <property name="geometry">
+    <rect>
+     <x>760</x>
+     <y>30</y>
+     <width>211</width>
+     <height>301</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>TextLabel</string>
+   </property>
+  </widget>
   <zorder>label_background</zorder>
   <zorder>pushButton_6</zorder>
   <zorder>label_panel</zorder>
@@ -383,6 +396,7 @@ background-color: rgb(30, 30, 30);
   <zorder>pushButton_right</zorder>
   <zorder>pushButton_left</zorder>
   <zorder>label_arrow</zorder>
+  <zorder>card_side</zorder>
  </widget>
  <resources>
   <include location="Image.qrc"/>

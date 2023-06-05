@@ -1,6 +1,5 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "setting.h"
 #include <QPixmap>
 
 
@@ -24,6 +23,8 @@ MainWindow::MainWindow(QWidget *parent)
     int w1=ui->title->width();
     int h1=ui->title->height();
     ui->title->setPixmap(titlePix.scaled(w1,h1));
+
+
 }
 
 MainWindow::~MainWindow()
@@ -38,9 +39,9 @@ void MainWindow::on_pushButton_exit_clicked()
 
 void MainWindow::on_pushButton_setting_clicked()
 {
-    Setting settingWindow;
-    settingWindow.setModal(true);
-    settingWindow.exec();
+    Setting *settingWindow= new Setting;
+    settingWindow->setModal(true);
+    settingWindow->exec();
 }
 
 void MainWindow::on_pushButton_play_clicked()

@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "gamewindow.h"
+#include "setting.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -26,5 +27,6 @@ private slots:
 private:
     Ui::MainWindow *ui;
     Gamewindow *gwindow;
+    Setting *settingWindow;
 };
 #endif // MAINWINDOW_H

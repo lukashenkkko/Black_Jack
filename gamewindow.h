@@ -7,6 +7,8 @@
 #include "math.h"
 #include "QPropertyAnimation"
 #include "QLabel"
+#include "cardinfo.h"
+
 
 namespace Ui {
 class Gamewindow;
@@ -32,11 +34,14 @@ private slots:
 private:
     Ui::Gamewindow *ui;
 
+    int skinID;
+
     //variables for coin animation
     int xShift, yShift, scale;
     float angleStep;
     QList<QLabel*> coinList;
     void coinScrolling(float turn); //function of coin animation
+    void cardCreating(int);
 
     //int i;
     //std::shared_ptr<int> coinID();
