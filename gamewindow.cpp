@@ -1,5 +1,6 @@
 #include "gamewindow.h"
 #include "ui_gamewindow.h"
+#include "gamemenu.h"
 
 Gamewindow::Gamewindow(QWidget *parent) :
     QDialog(parent),
@@ -34,10 +35,15 @@ Gamewindow::Gamewindow(QWidget *parent) :
     QPixmap coin500pix(":/pht/image/coin500.png");
     ui->label_coin500->setPixmap(coin500pix.scaled(ui->label_coin500->width(),ui->label_coin500->height()));
 
-    //Animation
-    xShift=540;
-    yShift=320;
-    scale=120;
+    //Variables for coin animation
+    xShift=495;
+    yShift=610;
+    scale=190;
+    angleStep=0;
+
+    //i=1;
+   //std::shared_ptr<int> coinID(new int(i));
+    //*coinID=i;
 
     coinList.append(ui->label_coin1);
     coinList.append(ui->label_coin5);
@@ -54,25 +60,43 @@ Gamewindow::~Gamewindow()
 
 void Gamewindow::on_pushButton_left_clicked()
 {
-    coinScrolling();
+    coinScrolling(1.047);
+   //*coinID-=1;
 }
 
 void Gamewindow::on_pushButton_right_clicked()
 {
-    coinScrolling();
+    //2.6
+    coinScrolling(-1.047);
+    //*coinID+=1;
 }
 
-void Gamewindow::coinScrolling()
+void Gamewindow::coinScrolling(float turn)
 {
     float angleUnit = 6.28/coinList.size();
+    angleStep+=turn;
     for(int i=0;i<coinList.size();i++)
     {
         QLabel* lbl=coinList.at(i);
         QPropertyAnimation *animation=new QPropertyAnimation(lbl,"geometry");
-        animation->setDuration(1000);
+        animation->setDuration(800);
         animation->setEasingCurve(QEasingCurve::Linear);
-        animation->setEndValue(QRectF(cos(angleUnit*i)*scale+xShift, sin(angleUnit*i)*scale+yShift, ui->label_coin1->height(),ui->label_coin1->width()));
+        animation->setEndValue(QRectF(cos(angleUnit*i+angleStep-1.57)*scale+xShift, sin(angleUnit*i+angleStep-1.57)*scale+yShift, ui->label_coin1->height(),ui->label_coin1->width()));
         animation->start(QAbstractAnimation::DeleteWhenStopped);
     }
+}
+
+
+void Gamewindow::on_pushButton_6_clicked()
+{
+    //ui->pushButton_6->setText(QString::number(*coinID));
+}
+
+
+void Gamewindow::on_pushButton_menu_clicked()
+{
+    Gamemenu gameMenuWindow;
+    gameMenuWindow.setModal(true);
+    gameMenuWindow.exec();
 }
 

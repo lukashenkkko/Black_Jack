@@ -2,6 +2,7 @@
 #define GAMEWINDOW_H
 
 #include <QDialog>
+#include <memory>
 #include "QList"
 #include "math.h"
 #include "QPropertyAnimation"
@@ -24,12 +25,21 @@ private slots:
 
     void on_pushButton_right_clicked();
 
+    void on_pushButton_6_clicked();
+
+    void on_pushButton_menu_clicked();
+
 private:
     Ui::Gamewindow *ui;
 
+    //variables for coin animation
     int xShift, yShift, scale;
+    float angleStep;
     QList<QLabel*> coinList;
-    void coinScrolling();
+    void coinScrolling(float turn); //function of coin animation
+
+    //int i;
+    //std::shared_ptr<int> coinID();
 };
 
 #endif // GAMEWINDOW_H

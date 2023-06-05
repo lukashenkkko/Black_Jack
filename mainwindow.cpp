@@ -24,7 +24,6 @@ MainWindow::MainWindow(QWidget *parent)
     int w1=ui->title->width();
     int h1=ui->title->height();
     ui->title->setPixmap(titlePix.scaled(w1,h1));
-
 }
 
 MainWindow::~MainWindow()
@@ -46,8 +45,11 @@ void MainWindow::on_pushButton_setting_clicked()
 
 void MainWindow::on_pushButton_play_clicked()
 {
-    gwindow=new Gamewindow(this);
+    Gamewindow *gwindow = new Gamewindow();
+    gwindow->setWindowFlags(Qt::Window|Qt::Dialog);
     gwindow->show();
-    hide();
+    close();
 }
+
+
 
