@@ -33,6 +33,8 @@ private slots:
 
     void on_pushButton_play_clicked();
 
+    void on_pushButton_addCard_clicked();
+
 private:
     Ui::Gamewindow *ui;
 
@@ -45,10 +47,21 @@ private:
 
     void coinScrolling(float turn); //function of coin animation
 
+    //variables for card animation
+    int xShiftCard, yShiftCard, scaleCard, cardSize;
+    float angleStepCard;
+    QList<QLabel*> cardListAnim;
+    QList<CardInfo> cardList;
+
+
+    void cardAdding(); //function of card animation
+
     void bet_regimeON();
     void bet_regimeOFF();
 
     int coinID;
+
+   // CardInfo card53;
 };
 
 #endif // GAMEWINDOW_H

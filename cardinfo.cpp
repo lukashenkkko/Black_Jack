@@ -9,6 +9,5 @@ CardInfo::CardInfo(std::string link, int cost, int skinID)
     std::string linkSTR;
     linkSTR= ":/Cards"+std::to_string(skinID)+"/image/cards/"+std::to_string(skinID)+"/";
     linkSTR.insert(23,link,23,link.size()-23);
-    //linkSTR.insert()
     this->link=QString::fromStdString(linkSTR);
 }

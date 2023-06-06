@@ -5,6 +5,7 @@
 #include <iostream>
 #include "QString"
 
+
  Gamewindow::Gamewindow(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::Gamewindow)
@@ -44,7 +45,7 @@
     xShift=495;
     yShift=610;
     scale=190;
-    angleStep=0;
+    angleStep=-1.57;
     coinID=1;
 
     coinList.append(ui->label_coin1);
@@ -54,7 +55,15 @@
     coinList.append(ui->label_coin100);
     coinList.append(ui->label_coin500);
 
+
+    //Variables for card animation
+    xShiftCard=495;
+    yShiftCard=210;
+    scaleCard=130;
+    angleStepCard=-1.57;
+    cardSize=600;
     skinID=1;
+
     //Adding cards objects
     CardInfo card1(":/Cards1/image/cards/1/2B.png",2,skinID);
     CardInfo card2(":/Cards1/image/cards/1/2C.png",2,skinID);
@@ -125,6 +134,10 @@
 
     QPixmap cardPix(card53.link);
     ui->card_side->setPixmap(cardPix.scaled(ui->card_side->width(),ui->card_side->height()));
+    ui->card_side_2->setPixmap(cardPix.scaled(ui->card_side->width(),ui->card_side->height()));
+    ui->card_side_3->setPixmap(cardPix.scaled(ui->card_side->width(),ui->card_side->height()));
+
+    cardList.append(card53);
 }
 
 Gamewindow::~Gamewindow()
@@ -161,7 +174,7 @@ void Gamewindow::coinScrolling(float turn)
         QPropertyAnimation *animation=new QPropertyAnimation(lbl,"geometry");
         animation->setDuration(800);
         animation->setEasingCurve(QEasingCurve::Linear);
-        animation->setEndValue(QRectF(cos(angleUnit*i+angleStep-1.57)*scale+xShift, sin(angleUnit*i+angleStep-1.57)*scale+yShift, ui->label_coin1->height(),ui->label_coin1->width()));
+        animation->setEndValue(QRectF(cos(angleUnit*i+angleStep)*scale+xShift, sin(angleUnit*i+angleStep)*scale+yShift, ui->label_coin1->height(),ui->label_coin1->width()));
         animation->start(QAbstractAnimation::DeleteWhenStopped);
     }
 }
@@ -251,6 +264,37 @@ void Gamewindow::on_pushButton_menu_clicked()
 void Gamewindow::on_pushButton_play_clicked()
 {
     bet_regimeOFF();
-
+    ui->label_all_number->setText(QString::number((ui->label_all_number->text()).toInt()-(ui->label_bet_number->text()).toInt()));
 }
+
+//Function for animation card adding
+void Gamewindow::cardAdding()
+{
+    angleStepCard=4.2;
+    float angleUnit = 1.57/cardListAnim.size();
+    for(int i=0;i<cardListAnim.size();i++){
+        QLabel *lbl= cardListAnim.at(i);
+        QPropertyAnimation* animation= new QPropertyAnimation(lbl,"geometry");
+        animation->setDuration(800);
+        animation->setEasingCurve(QEasingCurve::InCubic);
+        animation->setEndValue(QRectF(cos(angleUnit*i+angleStepCard)*scaleCard+xShiftCard, sin(angleUnit*i+angleStepCard)*scaleCard+yShiftCard,ui->card_side->width(),ui->card_side->height()));
+        animation->start(QAbstractAnimation::DeleteWhenStopped);
+    }
+}
+
+void Gamewindow::on_pushButton_addCard_clicked()
+{
+    QLabel* lbl= new QLabel(this);
+    lbl->setGeometry(ui->card_side->geometry());
+
+    QPixmap cardPix(cardList.at(0).link);
+    lbl->setPixmap(cardPix.scaled(ui->card_side->width(),ui->card_side->height()));
+    lbl->show();
+    cardListAnim.append(lbl);
+    cardAdding();
+}
+
+
+
+
 

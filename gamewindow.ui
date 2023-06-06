@@ -77,8 +77,7 @@ QPushButton:hover{
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">
-</string>
+    <string notr="true"/>
    </property>
    <property name="text">
     <string/>
@@ -94,9 +93,7 @@ QPushButton:hover{
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">
-
-</string>
+    <string notr="true"/>
    </property>
    <property name="text">
     <string/>
@@ -112,8 +109,7 @@ QPushButton:hover{
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">
-</string>
+    <string notr="true"/>
    </property>
    <property name="text">
     <string/>
@@ -129,9 +125,7 @@ QPushButton:hover{
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">
-
-</string>
+    <string notr="true"/>
    </property>
    <property name="text">
     <string/>
@@ -163,8 +157,7 @@ QPushButton:hover{
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">
-</string>
+    <string notr="true"/>
    </property>
    <property name="text">
     <string/>
@@ -377,10 +370,10 @@ background-color: rgb(30, 30, 30);
   <widget class="QLabel" name="card_side">
    <property name="geometry">
     <rect>
-     <x>760</x>
+     <x>840</x>
      <y>30</y>
-     <width>211</width>
-     <height>301</height>
+     <width>141</width>
+     <height>211</height>
     </rect>
    </property>
    <property name="text">
@@ -555,6 +548,169 @@ font: 16pt &quot;Rubik Bubbles&quot;;</string>
     <string>1000</string>
    </property>
   </widget>
+  <widget class="QLabel" name="card_side_2">
+   <property name="geometry">
+    <rect>
+     <x>835</x>
+     <y>33</y>
+     <width>141</width>
+     <height>211</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="card_side_3">
+   <property name="geometry">
+    <rect>
+     <x>830</x>
+     <y>36</y>
+     <width>141</width>
+     <height>211</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_addCard">
+   <property name="geometry">
+    <rect>
+     <x>300</x>
+     <y>470</y>
+     <width>81</width>
+     <height>81</height>
+    </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="font">
+    <font>
+     <family>Segoe UI Black</family>
+     <pointsize>40</pointsize>
+     <italic>false</italic>
+     <bold>false</bold>
+     <stylestrategy>PreferDefault</stylestrategy>
+    </font>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::LeftToRight</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton
+{
+ border: 4px solid black;
+  border-radius: 20px;
+  padding: 10px;
+background-color: rgb(50, 50, 50);
+text-align: center;
+	font: 40pt &quot;Segoe UI Black&quot;;
+  font: black;
+}
+
+QPushButton:hover{
+background-color: rgb(40, 40, 40);
+}
+
+QPushButton:pressed{
+background-color: rgb(30, 30, 30);
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset resource="Image.qrc">
+     <normaloff>:/pht/image/plus.png</normaloff>:/pht/image/plus.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>150</width>
+     <height>150</height>
+    </size>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_remuveCard">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>470</y>
+     <width>81</width>
+     <height>81</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton
+{
+ border: 4px solid black;
+  border-radius: 20px;
+  padding: 10px;
+background-color: rgb(50, 50, 50);
+	font: 900 40pt &quot;Segoe UI Black&quot;;
+  color: rgb(255,15,20)
+}
+
+QPushButton:hover{
+background-color: rgb(40, 40, 40);
+}
+
+QPushButton:pressed{
+background-color: rgb(30, 30, 30);
+}</string>
+   </property>
+   <property name="text">
+    <string>X</string>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>70</width>
+     <height>55</height>
+    </size>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>290</x>
+     <y>430</y>
+     <width>121</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel{
+font: 15pt &quot;Segoe UI Black&quot;;
+  color: rgb(228,228,228);
+}</string>
+   </property>
+   <property name="text">
+    <string>Ще карту</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>420</y>
+     <width>131</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel{
+font: 15pt &quot;Segoe UI Black&quot;;
+  color: rgb(228,228,228);
+}</string>
+   </property>
+   <property name="text">
+    <string>зупинитися</string>
+   </property>
+  </widget>
   <zorder>label_background</zorder>
   <zorder>label_panel</zorder>
   <zorder>pushButton_menu</zorder>
@@ -568,7 +724,6 @@ font: 16pt &quot;Rubik Bubbles&quot;;</string>
   <zorder>pushButton_right</zorder>
   <zorder>pushButton_left</zorder>
   <zorder>label_arrow</zorder>
-  <zorder>card_side</zorder>
   <zorder>label</zorder>
   <zorder>label_2</zorder>
   <zorder>pushButton_6</zorder>
@@ -577,6 +732,13 @@ font: 16pt &quot;Rubik Bubbles&quot;;</string>
   <zorder>label_bet</zorder>
   <zorder>label_bet_number</zorder>
   <zorder>label_all_number</zorder>
+  <zorder>card_side_3</zorder>
+  <zorder>card_side_2</zorder>
+  <zorder>card_side</zorder>
+  <zorder>pushButton_addCard</zorder>
+  <zorder>pushButton_remuveCard</zorder>
+  <zorder>label_3</zorder>
+  <zorder>label_4</zorder>
  </widget>
  <resources>
   <include location="Image.qrc"/>
