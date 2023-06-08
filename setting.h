@@ -14,7 +14,6 @@ class Setting : public QDialog
 public:
     explicit Setting(QWidget *parent = nullptr);
     ~Setting();
-    int infoTrans();
 
 private slots:
     void on_pushButton_clicked();

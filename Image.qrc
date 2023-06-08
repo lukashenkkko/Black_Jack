@@ -14,6 +14,7 @@
         <file>image/sound.png</file>
         <file>image/play.png</file>
         <file>image/plus.png</file>
+        <file>image/reload.png</file>
     </qresource>
     <qresource prefix="/Cards1">
         <file>image/cards/1/2B.png</file>

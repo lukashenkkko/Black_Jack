@@ -35,6 +35,12 @@ private slots:
 
     void on_pushButton_addCard_clicked();
 
+    void on_pushButton_removeCard_clicked();
+
+    void on_pushButton_another_bet_clicked();
+
+    void on_pushButton_replay_clicked();
+
 private:
     Ui::Gamewindow *ui;
 
@@ -50,18 +56,23 @@ private:
     //variables for card animation
     int xShiftCard, yShiftCard, scaleCard, cardSize;
     float angleStepCard;
-    QList<QLabel*> cardListAnim;
+    QList<QLabel*> cardListAnim, cardListAnimDealer;
     QList<CardInfo> cardList;
+    std::vector<int> usedCard;
 
+    //function of card animation
+    void cardAdding(int whom);
+    void cardSecretAdding();
 
-    void cardAdding(); //function of card animation
+    int cardRandomizing();
 
+    void sleep(qint64 msec);
+
+    int playerPoint=0, dealerPoint=0,secretDealerPoint=0;
     void bet_regimeON();
     void bet_regimeOFF();
 
-    int coinID;
-
-   // CardInfo card53;
+    int coinID; //tracking which cois is selected
 };
 
 #endif // GAMEWINDOW_H

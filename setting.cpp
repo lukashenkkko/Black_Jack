@@ -11,7 +11,7 @@ Setting::Setting(QWidget *parent) :
     ui->listWidget->addItem("Стиль 3");
     ui->listWidget->addItem("Стиль 4");
 
-    *style=1;
+    //*style=1;
 }
 
 Setting::~Setting()

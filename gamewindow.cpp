@@ -4,6 +4,8 @@
 #include <QPixmap>
 #include <iostream>
 #include "QString"
+#include "QTimer"
+#include <ctime>
 
 
  Gamewindow::Gamewindow(QWidget *parent) :
@@ -13,7 +15,16 @@
     ui->setupUi(this);
      setWindowFlags(Qt::Dialog | Qt::MSWindowsFixedSizeDialogHint); //Static window size
 
+    //hiding widgets
     ui->pushButton_play->hide();
+    ui->label_winlose->hide();
+    ui->pushButton_replay->hide();
+    ui->pushButton_another_bet->hide();
+    ui->label_replay->hide();
+    ui->label_another_bet->hide();
+
+    ui->label_winlose->setAlignment(Qt::AlignHCenter);
+    bet_regimeON();
 
     //setting the size of the background image
     QPixmap background(":/pht/image/background.jpg");
@@ -57,8 +68,8 @@
 
 
     //Variables for card animation
-    xShiftCard=495;
-    yShiftCard=210;
+    xShiftCard=515;
+    yShiftCard=540;
     scaleCard=130;
     angleStepCard=-1.57;
     cardSize=600;
@@ -137,7 +148,61 @@
     ui->card_side_2->setPixmap(cardPix.scaled(ui->card_side->width(),ui->card_side->height()));
     ui->card_side_3->setPixmap(cardPix.scaled(ui->card_side->width(),ui->card_side->height()));
 
+    //Adding all cards to the list to implement randomization
+    cardList.append(card1);
+    cardList.append(card2);
+    cardList.append(card3);
+    cardList.append(card4);
+    cardList.append(card5);
+    cardList.append(card6);
+    cardList.append(card7);
+    cardList.append(card8);
+    cardList.append(card9);
+    cardList.append(card10);
+    cardList.append(card11);
+    cardList.append(card12);
+    cardList.append(card13);
+    cardList.append(card14);
+    cardList.append(card15);
+    cardList.append(card16);
+    cardList.append(card17);
+    cardList.append(card18);
+    cardList.append(card19);
+    cardList.append(card20);
+    cardList.append(card21);
+    cardList.append(card22);
+    cardList.append(card23);
+    cardList.append(card24);
+    cardList.append(card25);
+    cardList.append(card26);
+    cardList.append(card27);
+    cardList.append(card28);
+    cardList.append(card29);
+    cardList.append(card30);
+    cardList.append(card31);
+    cardList.append(card32);
+    cardList.append(card33);
+    cardList.append(card34);
+    cardList.append(card35);
+    cardList.append(card36);
+    cardList.append(card37);
+    cardList.append(card38);
+    cardList.append(card39);
+    cardList.append(card40);
+    cardList.append(card41);
+    cardList.append(card42);
+    cardList.append(card43);
+    cardList.append(card44);
+    cardList.append(card45);
+    cardList.append(card46);
+    cardList.append(card47);
+    cardList.append(card48);
+    cardList.append(card49);
+    cardList.append(card50);
+    cardList.append(card51);
+    cardList.append(card52);
     cardList.append(card53);
+
 }
 
 Gamewindow::~Gamewindow()
@@ -186,12 +251,20 @@ void Gamewindow::bet_regimeON()
     ui->label_arrow->show();
     ui->pushButton_left->show();
     ui->pushButton_right->show();
-    ui->pushButton_play->show();
     ui->label_coin1->show();
     ui->label_coin5->show();
     ui->label_coin10->show();
+    ui->label_coin50->show();
     ui->label_coin100->show();
     ui->label_coin500->show();
+
+    //button for game
+    ui->pushButton_removeCard->hide();
+    ui->pushButton_addCard->hide();
+    ui->label_removeCard->hide();
+    ui->label_addCard->hide();
+    ui->label_player_point->hide();
+    ui->label_dealer_point->hide();
 }
 
 //function to enter the mode when can place bet
@@ -204,9 +277,18 @@ void Gamewindow::bet_regimeOFF()
     ui->pushButton_play->hide();
     ui->label_coin1->hide();
     ui->label_coin5->hide();
+    ui->label_coin50->hide();
     ui->label_coin10->hide();
     ui->label_coin100->hide();
     ui->label_coin500->hide();
+
+    //button for game
+    ui->pushButton_removeCard->show();
+    ui->pushButton_addCard->show();
+    ui->label_removeCard->show();
+    ui->label_addCard->show();
+    ui->label_player_point->show();
+    ui->label_dealer_point->show();
 }
 
 //button for bet
@@ -265,34 +347,223 @@ void Gamewindow::on_pushButton_play_clicked()
 {
     bet_regimeOFF();
     ui->label_all_number->setText(QString::number((ui->label_all_number->text()).toInt()-(ui->label_bet_number->text()).toInt()));
+
+    //first deal
+    cardAdding(1);
+    cardAdding(1);
+    cardAdding(0);
+    cardSecretAdding();
 }
 
 //Function for animation card adding
-void Gamewindow::cardAdding()
+void Gamewindow::cardAdding(int whom) //1 if card to player & 0 if card to dealer
 {
+    int randomID=cardRandomizing();  //card randomization
+
+    //adding new label
+    QLabel* lbl= new QLabel(this);
+    lbl->setGeometry(ui->card_side->geometry());
+
+    QPixmap cardPix(cardList.at(randomID).link);
+    lbl->setPixmap(cardPix.scaled(ui->card_side->width(),ui->card_side->height()));
+    lbl->show();
+
+    //animation
     angleStepCard=4.2;
+    if(whom==1){
+    playerPoint+=cardList.at(randomID).cost;  //Point calculation
+    cardListAnim.append(lbl);
     float angleUnit = 1.57/cardListAnim.size();
     for(int i=0;i<cardListAnim.size();i++){
         QLabel *lbl= cardListAnim.at(i);
         QPropertyAnimation* animation= new QPropertyAnimation(lbl,"geometry");
         animation->setDuration(800);
         animation->setEasingCurve(QEasingCurve::InCubic);
+
         animation->setEndValue(QRectF(cos(angleUnit*i+angleStepCard)*scaleCard+xShiftCard, sin(angleUnit*i+angleStepCard)*scaleCard+yShiftCard,ui->card_side->width(),ui->card_side->height()));
         animation->start(QAbstractAnimation::DeleteWhenStopped);
+    }
+    ui->label_player_point->setText(QString::number(playerPoint)); //set point to label
+    if(playerPoint>20)
+        on_pushButton_removeCard_clicked();
+    }
+    else{
+    dealerPoint+=cardList.at(randomID).cost; //Point calculation
+    cardListAnimDealer.append(lbl);
+    float angleUnit = 1.57/cardListAnimDealer.size();
+    for(int i=0;i<cardListAnimDealer.size();i++){
+        QLabel *lbl= cardListAnimDealer.at(i);
+        QPropertyAnimation* animation= new QPropertyAnimation(lbl,"geometry");
+        animation->setDuration(800);
+        animation->setEasingCurve(QEasingCurve::InCubic);
+        animation->setEndValue(QRectF(cos(angleUnit*i+angleStepCard)*scaleCard+xShiftCard, sin(angleUnit*i+angleStepCard)*scaleCard+120,ui->card_side->width(),ui->card_side->height()));
+        animation->start(QAbstractAnimation::DeleteWhenStopped);
+    }
+     ui->label_dealer_point->setText(QString::number(dealerPoint)); //set point to label
+    }
+    sleep(150);
+}
+
+void Gamewindow::cardSecretAdding()  //adding hidden dealer cards
+{
+    int randomID=cardRandomizing();  //card randomization
+
+    QLabel* lbl= new QLabel(this);
+    lbl->setGeometry(ui->card_side->geometry());
+
+    QPixmap cardPix(cardList.at(52).link);
+    lbl->setPixmap(cardPix.scaled(ui->card_side->width(),ui->card_side->height()));
+    lbl->show();
+
+    angleStepCard=4.2;
+    secretDealerPoint+=cardList.at(randomID).cost; //Point calculation
+    cardListAnimDealer.append(lbl);
+    float angleUnit = 1.57/cardListAnimDealer.size();
+    for(int i=0;i<cardListAnimDealer.size();i++){
+     QLabel *lbl= cardListAnimDealer.at(i);
+     QPropertyAnimation* animation= new QPropertyAnimation(lbl,"geometry");
+     animation->setDuration(800);
+     animation->setEasingCurve(QEasingCurve::InCubic);
+     animation->setEndValue(QRectF(cos(angleUnit*i+angleStepCard)*scaleCard+xShiftCard, sin(angleUnit*i+angleStepCard)*scaleCard+120,ui->card_side->width(),ui->card_side->height()));
+     animation->start(QAbstractAnimation::DeleteWhenStopped);
+    }
+    ui->label_dealer_point->setText(QString::number(dealerPoint)); //set point to label
+    sleep(150);
+}
+
+int Gamewindow::cardRandomizing()
+{
+    srand (time(NULL));
+    int randomID;
+    while(true){
+     randomID=rand()%52;
+     if(std::find(usedCard.begin(),usedCard.end(),randomID)==usedCard.end())
+     {
+        usedCard.push_back(randomID);
+        return randomID;
+        break;
+     }
     }
 }
 
 void Gamewindow::on_pushButton_addCard_clicked()
 {
-    QLabel* lbl= new QLabel(this);
-    lbl->setGeometry(ui->card_side->geometry());
-
-    QPixmap cardPix(cardList.at(0).link);
-    lbl->setPixmap(cardPix.scaled(ui->card_side->width(),ui->card_side->height()));
-    lbl->show();
-    cardListAnim.append(lbl);
-    cardAdding();
+    cardAdding(1);
 }
+
+void Gamewindow::sleep(qint64 msec)
+{
+        QEventLoop loop;
+        QTimer::singleShot(msec, &loop, SLOT(quit()));
+        loop.exec();
+}
+
+
+void Gamewindow::on_pushButton_removeCard_clicked()
+{
+    ui->pushButton_addCard->hide();
+    ui->pushButton_removeCard->hide();
+    ui->pushButton_replay->show();
+    ui->pushButton_another_bet->show();
+    ui->label_replay->show();
+    ui->label_another_bet->show();
+
+    ui->label_removeCard->hide();
+    ui->label_addCard->hide();
+
+    if(playerPoint>21){  //lose
+     ui->label_winlose->show();
+     ui->label_winlose->setText("Нема виграшу");
+    }
+    else{
+     while(dealerPoint<12)
+     cardAdding(0);
+
+        dealerPoint+=secretDealerPoint;
+     ui->label_dealer_point->setText(QString::number(dealerPoint));
+
+        if(playerPoint>dealerPoint||dealerPoint>21) //win
+     {
+     ui->label_winlose->show();
+     ui->label_winlose->setText("Ви виграли: ");
+     ui->label_winlose->setText(ui->label_winlose->text().append(QString::number(ui->label_bet_number->text().toInt()*2)));
+     ui->label_all_number->setText(QString::number((ui->label_all_number->text().toInt()+ui->label_bet_number->text().toInt()*2)));
+     }
+        else{ //lose
+     ui->label_winlose->show();
+     ui->label_winlose->setText("Нема виграшу");
+        }
+    }
+}
+
+void Gamewindow::on_pushButton_another_bet_clicked()
+{
+    //deleting old info
+    playerPoint=0;
+    dealerPoint=0;
+    secretDealerPoint=0;
+
+    bet_regimeON();
+    ui->label_winlose->hide();
+    ui->pushButton_another_bet->hide();
+    ui->pushButton_replay->hide();
+    ui->label_another_bet->hide();
+    ui->label_replay->hide();
+
+    //deleting old card
+    usedCard.clear();
+    for(int i=0;i<cardListAnim.size();i++){
+    QLabel* lbl=cardListAnim.at(i);
+    delete lbl;
+    }
+    cardListAnim.remove(0,cardListAnim.size());
+
+    for(int i=0;i<cardListAnimDealer.size();i++){
+    QLabel* lbl=cardListAnimDealer.at(i);
+    delete lbl;
+    }
+    cardListAnimDealer.remove(0,cardListAnimDealer.size());
+
+}
+
+void Gamewindow::on_pushButton_replay_clicked()
+{
+    //deleting old info
+    playerPoint=0;
+    dealerPoint=0;
+    secretDealerPoint=0;
+
+    ui->label_winlose->hide();
+    ui->pushButton_another_bet->hide();
+    ui->pushButton_replay->hide();
+    ui->label_another_bet->hide();
+    ui->label_replay->hide();
+
+    //deleting old card
+    usedCard.clear();
+    for(int i=0;i<cardListAnim.size();i++){
+    QLabel* lbl=cardListAnim.at(i);
+    delete lbl;
+    }
+    cardListAnim.remove(0,cardListAnim.size());
+
+    for(int i=0;i<cardListAnimDealer.size();i++){
+    QLabel* lbl=cardListAnimDealer.at(i);
+    delete lbl;
+    }
+    cardListAnimDealer.remove(0,cardListAnimDealer.size());
+
+    on_pushButton_play_clicked();
+}
+
+
+
+
+
+
+
+
+
 
 
 
