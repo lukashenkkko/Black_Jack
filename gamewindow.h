@@ -60,9 +60,12 @@ private:
     QList<CardInfo> cardList;
     std::vector<int> usedCard;
 
+    int randomShadowID;
+
     //function of card animation
     void cardAdding(int whom);
     void cardSecretAdding();
+    void cardFlip(int x, int y);
 
     int cardRandomizing();
 

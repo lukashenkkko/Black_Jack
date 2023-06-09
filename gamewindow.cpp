@@ -7,7 +7,6 @@
 #include "QTimer"
 #include <ctime>
 
-
  Gamewindow::Gamewindow(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::Gamewindow)
@@ -346,13 +345,23 @@ void Gamewindow::on_pushButton_menu_clicked()
 void Gamewindow::on_pushButton_play_clicked()
 {
     bet_regimeOFF();
+
+    if((ui->label_all_number->text()).toInt()-(ui->label_bet_number->text()).toInt()<0){
+        ui->label_winlose->show();
+        ui->label_winlose->setText("Недостатньо грошей");
+
+        bet_regimeON();
+    }
+    else{
     ui->label_all_number->setText(QString::number((ui->label_all_number->text()).toInt()-(ui->label_bet_number->text()).toInt()));
+    ui->label_winlose->hide();
 
     //first deal
     cardAdding(1);
     cardAdding(1);
     cardAdding(0);
     cardSecretAdding();
+    }
 }
 
 //Function for animation card adding
@@ -377,15 +386,17 @@ void Gamewindow::cardAdding(int whom) //1 if card to player & 0 if card to deale
     for(int i=0;i<cardListAnim.size();i++){
         QLabel *lbl= cardListAnim.at(i);
         QPropertyAnimation* animation= new QPropertyAnimation(lbl,"geometry");
-        animation->setDuration(800);
+        animation->setDuration(700);
         animation->setEasingCurve(QEasingCurve::InCubic);
 
         animation->setEndValue(QRectF(cos(angleUnit*i+angleStepCard)*scaleCard+xShiftCard, sin(angleUnit*i+angleStepCard)*scaleCard+yShiftCard,ui->card_side->width(),ui->card_side->height()));
         animation->start(QAbstractAnimation::DeleteWhenStopped);
     }
     ui->label_player_point->setText(QString::number(playerPoint)); //set point to label
-    if(playerPoint>20)
+    if(playerPoint>20){
+        //sleep(400);
         on_pushButton_removeCard_clicked();
+    }
     }
     else{
     dealerPoint+=cardList.at(randomID).cost; //Point calculation
@@ -394,19 +405,19 @@ void Gamewindow::cardAdding(int whom) //1 if card to player & 0 if card to deale
     for(int i=0;i<cardListAnimDealer.size();i++){
         QLabel *lbl= cardListAnimDealer.at(i);
         QPropertyAnimation* animation= new QPropertyAnimation(lbl,"geometry");
-        animation->setDuration(800);
+        animation->setDuration(700);
         animation->setEasingCurve(QEasingCurve::InCubic);
         animation->setEndValue(QRectF(cos(angleUnit*i+angleStepCard)*scaleCard+xShiftCard, sin(angleUnit*i+angleStepCard)*scaleCard+120,ui->card_side->width(),ui->card_side->height()));
         animation->start(QAbstractAnimation::DeleteWhenStopped);
     }
      ui->label_dealer_point->setText(QString::number(dealerPoint)); //set point to label
     }
-    sleep(150);
+    //sleep(150);
 }
 
 void Gamewindow::cardSecretAdding()  //adding hidden dealer cards
 {
-    int randomID=cardRandomizing();  //card randomization
+    randomShadowID=cardRandomizing();  //card randomization
 
     QLabel* lbl= new QLabel(this);
     lbl->setGeometry(ui->card_side->geometry());
@@ -416,19 +427,34 @@ void Gamewindow::cardSecretAdding()  //adding hidden dealer cards
     lbl->show();
 
     angleStepCard=4.2;
-    secretDealerPoint+=cardList.at(randomID).cost; //Point calculation
+    secretDealerPoint+=cardList.at(randomShadowID).cost; //Point calculation
     cardListAnimDealer.append(lbl);
     float angleUnit = 1.57/cardListAnimDealer.size();
     for(int i=0;i<cardListAnimDealer.size();i++){
      QLabel *lbl= cardListAnimDealer.at(i);
      QPropertyAnimation* animation= new QPropertyAnimation(lbl,"geometry");
-     animation->setDuration(800);
+     animation->setDuration(700);
      animation->setEasingCurve(QEasingCurve::InCubic);
      animation->setEndValue(QRectF(cos(angleUnit*i+angleStepCard)*scaleCard+xShiftCard, sin(angleUnit*i+angleStepCard)*scaleCard+120,ui->card_side->width(),ui->card_side->height()));
      animation->start(QAbstractAnimation::DeleteWhenStopped);
     }
     ui->label_dealer_point->setText(QString::number(dealerPoint)); //set point to label
-    sleep(150);
+    //sleep(150);
+}
+
+void Gamewindow::cardFlip(int x,int y)
+{
+    QPoint pos1(x, y);
+    QLabel *lbl= cardListAnimDealer.at(1);
+    QPropertyAnimation* animation= new QPropertyAnimation(lbl,"pos");
+    animation->setDuration(400);
+    animation->setEasingCurve(QEasingCurve::InCubic);
+     animation->setEndValue(pos1);
+    animation->start(QAbstractAnimation::DeleteWhenStopped);
+    //sleep(100);
+
+    QPixmap cardPix(cardList.at(randomShadowID).link);
+    lbl->setPixmap(cardPix.scaled(ui->card_side->width(),ui->card_side->height()));
 }
 
 int Gamewindow::cardRandomizing()
@@ -448,19 +474,20 @@ int Gamewindow::cardRandomizing()
 
 void Gamewindow::on_pushButton_addCard_clicked()
 {
+    //sleep(100);
     cardAdding(1);
 }
 
 void Gamewindow::sleep(qint64 msec)
 {
         QEventLoop loop;
-        QTimer::singleShot(msec, &loop, SLOT(quit()));
+        QTimer::singleShot(msec, &loop, &QEventLoop::quit);
         loop.exec();
 }
 
-
 void Gamewindow::on_pushButton_removeCard_clicked()
 {
+    //sleep(700);
     ui->pushButton_addCard->hide();
     ui->pushButton_removeCard->hide();
     ui->pushButton_replay->show();
@@ -476,10 +503,16 @@ void Gamewindow::on_pushButton_removeCard_clicked()
      ui->label_winlose->setText("Нема виграшу");
     }
     else{
-     while(dealerPoint<12)
+     //logic of issuing cards to dealer
+     while(dealerPoint<10)
      cardAdding(0);
 
-        dealerPoint+=secretDealerPoint;
+     int cordx=cardListAnimDealer.at(1)->pos().x();
+     int cordy=cardListAnimDealer.at(1)->pos().y();
+     cardFlip(550,-300);
+     //sleep(400);
+     cardFlip(cordx,cordy);
+     dealerPoint+=secretDealerPoint;
      ui->label_dealer_point->setText(QString::number(dealerPoint));
 
         if(playerPoint>dealerPoint||dealerPoint>21) //win
