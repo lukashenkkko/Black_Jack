@@ -4,6 +4,7 @@
 #include <QDialog>
 #include "QMainWindow"
 #include "mainwindow.h"
+#include "sound.h"
 
 namespace Ui {
 class Gamemenu;

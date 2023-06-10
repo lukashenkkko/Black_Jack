@@ -21,16 +21,18 @@ Setting::~Setting()
 
 void Setting::on_pushButton_clicked()
 {
-
+    Sound sound;
+    sound.playButton();
     if(ui->listWidget->currentItem()->text() == "Cтиль 1")
-        *style=1;
+        style=1;
     if(ui->listWidget->currentItem()->text() == "Cтиль 2")
-        *style=2;
+        style=2;
     if(ui->listWidget->currentItem()->text() == "Cтиль 3")
-        *style=3;
+        style=3;
     if(ui->listWidget->currentItem()->text() == "Cтиль 4")
-        *style=4;
+        style=4;
 
+    emit signal();
     hide();
 }
 

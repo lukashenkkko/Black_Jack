@@ -4,6 +4,11 @@
 #include <QMainWindow>
 #include "gamewindow.h"
 #include "setting.h"
+#include <QMediaPlayer>
+#include <qmediaplayer.h>
+#include "sound.h"
+#include <QAudioOutput>
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -28,5 +33,9 @@ private:
     Ui::MainWindow *ui;
     Gamewindow *gwindow;
     Setting *settingWindow;
+
+    QMediaPlayer* m_player;
+    QAudioOutput* audioOutput;
+    void con();
 };
 #endif // MAINWINDOW_H

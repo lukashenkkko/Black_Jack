@@ -1,0 +1,12 @@
+release/cardinfo.o
+release/gamemenu.o
+release/gamewindow.o
+release/main.o
+release/mainwindow.o
+release/setting.o
+release/sound.o
+release/qrc_Image.o
+release/moc_gamemenu.o
+release/moc_gamewindow.o
+release/moc_mainwindow.o
+release/moc_setting.o

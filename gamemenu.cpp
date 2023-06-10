@@ -16,11 +16,16 @@ Gamemenu::~Gamemenu()
 
 void Gamemenu::on_pushButton_return_game_clicked()
 {
+    Sound sound;
+    sound.playButton();
     close();
 }
 
 void Gamemenu::on_pushButton_return_mainmenu_clicked()
 {
+    Sound sound;
+    sound.playButton();
+
     QApplication::closeAllWindows();
     MainWindow *mainWindow = new MainWindow();
     mainWindow->setWindowFlags(Qt::Window|Qt::Dialog);
@@ -29,6 +34,9 @@ void Gamemenu::on_pushButton_return_mainmenu_clicked()
 
 void Gamemenu::on_pushButton_exit_clicked()
 {
+    Sound sound;
+    sound.playButton();
+
     QApplication::quit();
 }
 

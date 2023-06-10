@@ -11,7 +11,6 @@
         <file>image/coin100.png</file>
         <file>image/coin500.png</file>
         <file>image/menu.png</file>
-        <file>image/sound.png</file>
         <file>image/play.png</file>
         <file>image/plus.png</file>
         <file>image/reload.png</file>
@@ -180,5 +179,10 @@
         <file>image/cards/3/QH.png</file>
         <file>image/cards/3/QP.png</file>
         <file>image/cards/3/SIDE.png</file>
+    </qresource>
+    <qresource prefix="/sound">
+        <file>sound/music.wav</file>
+        <file>sound/button.mp3</file>
+        <file>sound/cardsound.mp3</file>
     </qresource>
 </RCC>

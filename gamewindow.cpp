@@ -73,6 +73,7 @@
     angleStepCard=-1.57;
     cardSize=600;
     skinID=1;
+    slot();
 
     //Adding cards objects
     CardInfo card1(":/Cards1/image/cards/1/2B.png",2,skinID);
@@ -211,6 +212,9 @@ Gamewindow::~Gamewindow()
 
 void Gamewindow::on_pushButton_left_clicked()
 {
+    Sound sound;
+    sound.playButton();
+
     coinScrolling(1.047);
     if(coinID==1)
         coinID=6;
@@ -220,7 +224,9 @@ void Gamewindow::on_pushButton_left_clicked()
 
 void Gamewindow::on_pushButton_right_clicked()
 {
-    //2.6
+    Sound sound;
+    sound.playButton();
+
     coinScrolling(-1.047);
     if(coinID==6)
     coinID=1;
@@ -290,6 +296,11 @@ void Gamewindow::bet_regimeOFF()
     ui->label_dealer_point->show();
 }
 
+void Gamewindow::slot()
+{
+    skinID=2;
+}
+
 //button for bet
 void Gamewindow::on_pushButton_6_clicked()
 {
@@ -337,6 +348,9 @@ void Gamewindow::on_pushButton_6_clicked()
 
 void Gamewindow::on_pushButton_menu_clicked()
 {
+    Sound sound;
+    sound.playButton();
+
     Gamemenu gameMenuWindow;
     gameMenuWindow.setModal(true);
     gameMenuWindow.exec();
@@ -345,6 +359,9 @@ void Gamewindow::on_pushButton_menu_clicked()
 void Gamewindow::on_pushButton_play_clicked()
 {
     bet_regimeOFF();
+
+    Sound sound;
+    sound.playButton();
 
     if((ui->label_all_number->text()).toInt()-(ui->label_bet_number->text()).toInt()<0){
         ui->label_winlose->show();
@@ -359,14 +376,23 @@ void Gamewindow::on_pushButton_play_clicked()
     //first deal
     cardAdding(1);
     cardAdding(1);
+
     cardAdding(0);
     cardSecretAdding();
+
+    if(playerPoint>20){
+        //sleep(400);
+        on_pushButton_removeCard_clicked();
+    }
     }
 }
 
 //Function for animation card adding
 void Gamewindow::cardAdding(int whom) //1 if card to player & 0 if card to dealer
 {
+    Sound sound;
+    sound.playCard();
+
     int randomID=cardRandomizing();  //card randomization
 
     //adding new label
@@ -393,10 +419,6 @@ void Gamewindow::cardAdding(int whom) //1 if card to player & 0 if card to deale
         animation->start(QAbstractAnimation::DeleteWhenStopped);
     }
     ui->label_player_point->setText(QString::number(playerPoint)); //set point to label
-    if(playerPoint>20){
-        //sleep(400);
-        on_pushButton_removeCard_clicked();
-    }
     }
     else{
     dealerPoint+=cardList.at(randomID).cost; //Point calculation
@@ -417,6 +439,9 @@ void Gamewindow::cardAdding(int whom) //1 if card to player & 0 if card to deale
 
 void Gamewindow::cardSecretAdding()  //adding hidden dealer cards
 {
+    Sound sound;
+    sound.playCard();
+
     randomShadowID=cardRandomizing();  //card randomization
 
     QLabel* lbl= new QLabel(this);
@@ -444,6 +469,9 @@ void Gamewindow::cardSecretAdding()  //adding hidden dealer cards
 
 void Gamewindow::cardFlip(int x,int y)
 {
+    Sound sound;
+    sound.playCard();
+
     QPoint pos1(x, y);
     QLabel *lbl= cardListAnimDealer.at(1);
     QPropertyAnimation* animation= new QPropertyAnimation(lbl,"pos");
@@ -451,7 +479,7 @@ void Gamewindow::cardFlip(int x,int y)
     animation->setEasingCurve(QEasingCurve::InCubic);
      animation->setEndValue(pos1);
     animation->start(QAbstractAnimation::DeleteWhenStopped);
-    //sleep(100);
+   // sleep(100);
 
     QPixmap cardPix(cardList.at(randomShadowID).link);
     lbl->setPixmap(cardPix.scaled(ui->card_side->width(),ui->card_side->height()));
@@ -474,8 +502,15 @@ int Gamewindow::cardRandomizing()
 
 void Gamewindow::on_pushButton_addCard_clicked()
 {
-    //sleep(100);
+   // Sound sound;
+    //sound.playButton();
+
+    sleep(100);
     cardAdding(1);
+    if(playerPoint>20){
+     //sleep(400);
+     on_pushButton_removeCard_clicked();
+    }
 }
 
 void Gamewindow::sleep(qint64 msec)
@@ -487,7 +522,10 @@ void Gamewindow::sleep(qint64 msec)
 
 void Gamewindow::on_pushButton_removeCard_clicked()
 {
-    //sleep(700);
+    Sound sound;
+    sound.playButton();
+
+    //sleep(150);
     ui->pushButton_addCard->hide();
     ui->pushButton_removeCard->hide();
     ui->pushButton_replay->show();
@@ -510,7 +548,7 @@ void Gamewindow::on_pushButton_removeCard_clicked()
      int cordx=cardListAnimDealer.at(1)->pos().x();
      int cordy=cardListAnimDealer.at(1)->pos().y();
      cardFlip(550,-300);
-     //sleep(400);
+     sleep(400);
      cardFlip(cordx,cordy);
      dealerPoint+=secretDealerPoint;
      ui->label_dealer_point->setText(QString::number(dealerPoint));
@@ -531,7 +569,11 @@ void Gamewindow::on_pushButton_removeCard_clicked()
 
 void Gamewindow::on_pushButton_another_bet_clicked()
 {
+    Sound sound;
+    sound.playButton();
+
     //deleting old info
+    sleep(160);
     playerPoint=0;
     dealerPoint=0;
     secretDealerPoint=0;
@@ -549,6 +591,7 @@ void Gamewindow::on_pushButton_another_bet_clicked()
     QLabel* lbl=cardListAnim.at(i);
     delete lbl;
     }
+
     cardListAnim.remove(0,cardListAnim.size());
 
     for(int i=0;i<cardListAnimDealer.size();i++){
@@ -562,6 +605,7 @@ void Gamewindow::on_pushButton_another_bet_clicked()
 void Gamewindow::on_pushButton_replay_clicked()
 {
     //deleting old info
+    sleep(160);
     playerPoint=0;
     dealerPoint=0;
     secretDealerPoint=0;
@@ -588,10 +632,6 @@ void Gamewindow::on_pushButton_replay_clicked()
 
     on_pushButton_play_clicked();
 }
-
-
-
-
 
 
 

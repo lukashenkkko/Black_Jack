@@ -76,6 +76,9 @@ private:
     void bet_regimeOFF();
 
     int coinID; //tracking which cois is selected
+
+public slots:
+    void slot();
 };
 
 #endif // GAMEWINDOW_H

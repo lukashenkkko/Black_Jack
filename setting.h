@@ -2,6 +2,7 @@
 #define SETTING_H
 
 #include <QDialog>
+#include "sound.h"
 
 namespace Ui {
 class Setting;
@@ -20,7 +21,10 @@ private slots:
 
 private:
     Ui::Setting *ui;
-    int* style;
+    int style;
+
+signals:
+    void signal();
 };
 
 #endif // SETTING_H

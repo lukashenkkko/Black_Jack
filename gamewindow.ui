@@ -205,48 +205,6 @@ background-color: rgb(30, 30, 30);
     </size>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_sound">
-   <property name="geometry">
-    <rect>
-     <x>960</x>
-     <y>470</y>
-     <width>81</width>
-     <height>81</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QPushButton
-{
- border: 4px solid black;
-  border-radius: 20px;
-  padding: 10px;
-background-color: rgb(50, 50, 50);
-	font: 900 16pt &quot;Segoe UI Black&quot;;
-  font: black;
-}
-
-QPushButton:hover{
-background-color: rgb(40, 40, 40);
-}
-
-QPushButton:pressed{
-background-color: rgb(30, 30, 30);
-}</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="icon">
-    <iconset resource="Image.qrc">
-     <normaloff>:/pht/image/sound.png</normaloff>:/pht/image/sound.png</iconset>
-   </property>
-   <property name="iconSize">
-    <size>
-     <width>55</width>
-     <height>55</height>
-    </size>
-   </property>
-  </widget>
   <widget class="QLabel" name="label_panel">
    <property name="geometry">
     <rect>
@@ -928,7 +886,6 @@ font: 15pt &quot;Segoe UI Black&quot;;
   <zorder>label_background</zorder>
   <zorder>label_panel</zorder>
   <zorder>pushButton_menu</zorder>
-  <zorder>pushButton_sound</zorder>
   <zorder>label_coin1</zorder>
   <zorder>label_coin10</zorder>
   <zorder>label_coin100</zorder>

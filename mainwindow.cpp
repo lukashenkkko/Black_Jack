@@ -11,6 +11,8 @@ MainWindow::MainWindow(QWidget *parent)
 
     setWindowFlags(Qt::Dialog | Qt::MSWindowsFixedSizeDialogHint); //Static window size
 
+
+
     //setting the size of the background image
     QPixmap background_mainmenu(":/pht/image/background_mainmenu.jpg");
     ui->label_background_main->setGeometry(0,0,0,0);
@@ -24,7 +26,6 @@ MainWindow::MainWindow(QWidget *parent)
     int h1=ui->title->height();
     ui->title->setPixmap(titlePix.scaled(w1,h1));
 
-
 }
 
 MainWindow::~MainWindow()
@@ -34,11 +35,15 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_exit_clicked()
 {
+    Sound sound;
+    sound.playButton();
     QApplication::quit();
 }
 
 void MainWindow::on_pushButton_setting_clicked()
 {
+    Sound sound;
+    sound.playButton();
     Setting *settingWindow= new Setting;
     settingWindow->setModal(true);
     settingWindow->exec();
@@ -46,11 +51,30 @@ void MainWindow::on_pushButton_setting_clicked()
 
 void MainWindow::on_pushButton_play_clicked()
 {
+    Sound sound;
+    sound.playButton();
     Gamewindow *gwindow = new Gamewindow();
     gwindow->setWindowFlags(Qt::Window|Qt::Dialog);
     gwindow->show();
+      con();
     close();
 }
+
+void MainWindow::con()
+{
+    Gamewindow *gwindow = new Gamewindow();
+    Setting *settingWindow= new Setting;
+    connect(settingWindow,&Setting::signal,gwindow,&Gamewindow::slot);
+}
+
+
+
+
+
+
+
+
+
 
 
 
