@@ -1,13 +1,3 @@
-#include "cardinfo.h"
-
-CardInfo::CardInfo(std::string link, int cost, int skinID)
-{
-    this->cost=cost;
-   // :/Cards3/image/cards/3/3C.png
-   // :/Cards2/image/cards/2/10P.png
-   // :/Cards1/image/cards/1/AP.png
-    std::string linkSTR;
-    linkSTR= ":/Cards"+std::to_string(skinID)+"/image/cards/"+std::to_string(skinID)+"/";
-    linkSTR.insert(23,link,23,link.size()-23);
-    this->link=QString::fromStdString(linkSTR);
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:f56fb3696a672e13eab038c44e999ff8dcf9cf07550e0c538099bde5d3dd1cdb
+size 327

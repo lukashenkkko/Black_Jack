@@ -1,0 +1,12 @@
+debug/cardinfo.o
+debug/gamemenu.o
+debug/gamewindow.o
+debug/main.o
+debug/mainwindow.o
+debug/setting.o
+debug/sound.o
+debug/qrc_Image.o
+debug/moc_gamemenu.o
+debug/moc_gamewindow.o
+debug/moc_mainwindow.o
+debug/moc_setting.o

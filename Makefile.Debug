@@ -291,11 +291,14 @@ debug/qrc_Image.cpp: Image.qrc \
 		image/cards/2/AB.png \
 		image/coin5\ .png \
 		image/coin500.png \
+		image/preview2.jpg \
 		image/plus.png \
 		image/background_mainmenu.jpg \
+		image/preview1.jpg \
 		image/coin1.png \
 		image/reload.png \
 		image/menu.png \
+		image/preview3.jpg \
 		image/coin50.png \
 		image/coin100.png \
 		image/coin10.png \

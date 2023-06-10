@@ -19,12 +19,17 @@ public:
 private slots:
     void on_pushButton_clicked();
 
+    void on_listWidget_clicked(const QModelIndex &index);
+
 private:
     Ui::Setting *ui;
     int style;
 
 signals:
-    void signal();
+    void signal(int value);
+
+public slots:
+    void slot();
 };
 
 #endif // SETTING_H

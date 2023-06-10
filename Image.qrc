@@ -14,6 +14,9 @@
         <file>image/play.png</file>
         <file>image/plus.png</file>
         <file>image/reload.png</file>
+        <file>image/preview1.jpg</file>
+        <file>image/preview2.jpg</file>
+        <file>image/preview3.jpg</file>
     </qresource>
     <qresource prefix="/Cards1">
         <file>image/cards/1/2B.png</file>
@@ -181,8 +184,8 @@
         <file>image/cards/3/SIDE.png</file>
     </qresource>
     <qresource prefix="/sound">
-        <file>sound/music.wav</file>
         <file>sound/button.mp3</file>
         <file>sound/cardsound.mp3</file>
+        <file>sound/music.mp3</file>
     </qresource>
 </RCC>

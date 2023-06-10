@@ -36,6 +36,8 @@ private:
 
     QMediaPlayer* m_player;
     QAudioOutput* audioOutput;
-    void con();
+
+signals:
+    void signal();
 };
 #endif // MAINWINDOW_H

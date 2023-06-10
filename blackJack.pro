@@ -1,8 +1,11 @@
 QT       += core gui
+QT       += multimedia
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
+
 CONFIG += c++17
+
 
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
@@ -14,14 +17,16 @@ SOURCES += \
     gamewindow.cpp \
     main.cpp \
     mainwindow.cpp \
-    setting.cpp
+    setting.cpp \
+    sound.cpp
 
 HEADERS += \
     cardinfo.h \
     gamemenu.h \
     gamewindow.h \
     mainwindow.h \
-    setting.h
+    setting.h \
+    sound.h
 
 FORMS += \
     gamemenu.ui \

@@ -74,7 +74,7 @@ public:
     void retranslateUi(QDialog *Setting)
     {
         Setting->setWindowTitle(QCoreApplication::translate("Setting", "Dialog", nullptr));
-        label->setText(QCoreApplication::translate("Setting", "34523452345]", nullptr));
+        label->setText(QString());
         pushButton->setText(QCoreApplication::translate("Setting", "\320\227\320\261\320\265\321\200\320\265\320\263\321\202\320\270", nullptr));
     } // retranslateUi
 

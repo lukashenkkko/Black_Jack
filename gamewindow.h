@@ -60,7 +60,7 @@ private:
     QList<CardInfo> cardList;
     std::vector<int> usedCard;
 
-    int randomShadowID;
+    int randomShadowID;  //id of hidden dealer card
 
     //function of card animation
     void cardAdding(int whom);
@@ -69,7 +69,7 @@ private:
 
     int cardRandomizing();
 
-    void sleep(qint64 msec);
+    void sleep(qint64 msec); //waiting function
 
     int playerPoint=0, dealerPoint=0,secretDealerPoint=0;
     void bet_regimeON();
@@ -78,7 +78,7 @@ private:
     int coinID; //tracking which cois is selected
 
 public slots:
-    void slot();
+    void slot(int value);
 };
 
 #endif // GAMEWINDOW_H
